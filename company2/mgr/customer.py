@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 import json
 from common.models import Customer
+from django.db.models import Q
 
 
 # def dispatcher(request):
@@ -48,6 +49,13 @@ from common.models import Customer
 def listcustomers(request):
     # 返回一个 QuerySet 对象 ，包含所有的表记录
     qs = Customer.objects.values()
+    keywords = request.params.get('keywords', None)
+    if keywords:
+        conditions = [Q(name__contains=one) for one in keywords.split(' ') if one]
+        query = Q()
+        for condition in conditions:
+            query &= condition
+        qs = qs.filter(query)
 
     # 将 QuerySet 对象 转化为 list 类型
     # 否则不能 被 转化为 JSON 字符串

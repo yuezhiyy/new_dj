@@ -25,4 +25,4 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('sales/', include('sales.url')),
                   path('api/mgr/', include('mgr.url'))
-              ] + static("/", document_root="./z_dist3")  # 加一个路由声明和静态文件 测试
+              ] + static("/", document_root="./z_dist1.5")  # 加一个路由声明和静态文件 测试

@@ -71,6 +71,10 @@
 #
 # print(add(5))
 
-a = b = c = 3334
-print(id(a), id(b), id(c))
-print(a is b)
+# a = b = c = 3334
+# print(id(a), id(b), id(c))
+# print(a is b)
+date_time = str(input())
+print(int(date_time[4:6])+1)
+print(date_time[4:6])
+# 20130314
